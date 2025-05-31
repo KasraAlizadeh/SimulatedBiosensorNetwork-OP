@@ -98,20 +98,28 @@ def plot_sample_signals(data, labels, save_path=None, n=5):
     plt.show()
 
 def plot_dataset_summary(data, labels):
-    avg_signal = np.mean(data, axis=0)
-    plt.figure(figsize=(8, 4))
-    plt.plot(avg_signal)
-    plt.title("Average Signal Across Dataset")
-    plt.xlabel("Time")
-    plt.ylabel("Amplitude")
-    plt.tight_layout()
-    plt.show()
+    print("\nDataset Summary:")
+    print(f"Total Samples: {len(data)}")
+    print(f"Signal Length: {data.shape[1]}")
+    unique, counts = np.unique(labels, return_counts=True)
+    print("Label Distribution:")
+    for u, c in zip(unique, counts):
+        print(f"  Label {u}: {c} samples")
+    print("\nExample Signal Data:")
+    print(data[0])
 
 def plot_feature_correlation(features, save_path=None):
-    corr = np.corrcoef(features.T)
-    plt.figure(figsize=(10, 8))
-    sns.heatmap(corr, cmap='coolwarm', square=True)
-    plt.title("Feature Correlation Matrix")
+    feature_names = [
+        'Mean', 'Std', 'Skewness', 'Kurtosis', 'Max', 'Min', 'Median', 'Power',
+        'Freq_Mean', 'Freq_Std', 'Freq_Max', 'Freq_Min'
+    ]
+    corr = pd.DataFrame(features, columns=feature_names).corr()
+    plt.figure(figsize=(12, 10))
+    sns.heatmap(corr, cmap='coolwarm', annot=True, fmt=".2f", square=True,
+                xticklabels=feature_names, yticklabels=feature_names)
+    plt.title("Feature Correlation Heatmap")
+    plt.xlabel("Features")
+    plt.ylabel("Features")
     if save_path:
         plt.savefig(save_path)
     plt.tight_layout()
