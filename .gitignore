@@ -1,0 +1,17 @@
+# === Python & venv ===
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env/
+*.sqlite3
+
+# === Jupyter & Notebook Checkpoints ===
+.ipynb_checkpoints
+
+# === VSCode / PyCharm ===
+.idea/
+.vscode/
+
+# === OS ===
+Thumbs.db
