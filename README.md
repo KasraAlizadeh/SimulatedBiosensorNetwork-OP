@@ -165,4 +165,4 @@ The journey doesn't stop here! There are many exciting avenues for expanding thi
 
 ---
 
-Feel free to contribute, explore, and enhance this project! If you have any questions or ideas, don't hesitate to open an issue or reach out. Happy simulating! 🚀git
+Feel free to contribute, explore, and enhance this project! If you have any questions or ideas, don't hesitate to open an issue or reach out.
