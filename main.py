@@ -39,6 +39,10 @@ data_dir = "biosensor_data"
 os.makedirs(plot_dir, exist_ok=True)
 os.makedirs(data_dir, exist_ok=True)
 
+# === Describe Data Structure === #
+print("\n[INFO] The data consists of electrophysiological time-series signals simulated to reflect plant response to organophosphate exposure.")
+print("Each sample is a 256-point signal, and labels represent 4 contamination levels (0: clean, 1-3: increasing contamination).")
+
 # === Organophosphate Signal Simulator === #
 class OrganophosphateSignalSimulator:
     def __init__(self, n_samples=10000, signal_length=256, label_noise_ratio=0.05):
@@ -141,7 +145,6 @@ def plot_model_roc(y_true, y_prob, model_name, save_path=None):
     plt.tight_layout()
     plt.show()
 
-# === Additional Helper Functions === #
 def save_data(features, labels, prefix="binary"):
     np.save(os.path.join(data_dir, f"X_{prefix}.npy"), features)
     np.save(os.path.join(data_dir, f"y_{prefix}.npy"), labels)
@@ -265,4 +268,3 @@ df_results = pd.DataFrame(data, columns=['Model', 'Accuracy', 'Mutual Info', 'AU
 df_results.to_csv(os.path.join(data_dir, "model_results.csv"), index=False)
 print("\nModel Performance Summary:")
 print(df_results)
-
