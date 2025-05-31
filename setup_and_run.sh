@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "[+] Creating virtual environment..."
+echo "[+] Creating virtual environment using Python 3.11..."
 python3 -m venv venv
 
 echo "[+] Activating virtual environment..."
